@@ -1,12 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const server = express();
+const rotasDeUsuario = require("./rotasDeUsuario"); // Caminho corrigido
 
-const rotasDeUsuario = require ("../routes/rotasDeUsuario");
+router.get("/", (_req, res) => res.status(200).send("Olá Mundo!"));
 
-router.get("/", (_req, res) => res.status(200).send("Olá Mundo!"))
+router.use("/usuarios", rotasDeUsuario); // Ajuste aqui
 
-server.use("/usuarios", rotasDeUsuario);
-
-module.exports = server;
+module.exports = router;
